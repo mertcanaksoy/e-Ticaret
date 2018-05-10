@@ -1,0 +1,27 @@
+﻿@model VTYS_Proje.Models.SiparisDurum
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SiparisDurum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisDurumAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisDurumAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SiparisDurumID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

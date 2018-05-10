@@ -1,0 +1,10 @@
+﻿@model IEnumerable<VTYS_Proje.Models.Marka>
+<li class="menu-item-has-children">
+    <a href="#">Markalar</a>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="/Home/MarkalaraGoreUrunler/@item.MarkaID">@item.MarkaAdi</a></li>
+        }
+    </ul>
+</li>

@@ -1,0 +1,20 @@
+﻿@model VTYS_Proje.Models.Urun
+@{
+    ViewBag.Title = "ResimEkle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Resim Eklenen Ürün: @Model.UrunAdi @Model.UrunAciklama</h2>
+<br />
+<!--ürün controllerındaki veriler ResimEkle actionuna post yöntemiyle upload edilecek -->
+@using (Html.BeginForm("ResimEkle", "Urun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="hidden" name="urunid" value="@Model.UrunID" />
+    <input type="file" name="Dosyalar" multiple /> //birden fazla dosya upload etmek için
+                                                <input type="submit" value="Yükle" />
+}
+
+@if (ViewBag.Mesaj != null)
+{
+    <p style="color:red">@ViewBag.Mesaj</p>
+}

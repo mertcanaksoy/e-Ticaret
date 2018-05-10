@@ -1,0 +1,75 @@
+﻿@model VTYS_Proje.Models.Siparis
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Siparis</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kargo.KargoAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kargo.KargoAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Musteri.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Musteri.Aciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Personel.PersonelID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Personel.PersonelID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisDurum.SiparisDurumAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisDurum.SiparisDurumAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SepetteMi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SepetteMi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KargoTakipNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KargoTakipNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SiparisID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

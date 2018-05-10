@@ -1,0 +1,11 @@
+﻿@model IEnumerable<VTYS_Proje.Models.Kategori>
+
+<li class="menu-item-has-children">
+    <a href="#">Kategoriler</a>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="/Home/Urunler/@item.KategoriID">@item.KategoriAdi</a></li>
+        }
+    </ul>
+</li>

@@ -1,0 +1,43 @@
+﻿@model VTYS_Proje.Models.Tedarikci
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tedarikci</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Urun.UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Urun.UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TedarikciAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TedarikciAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TedarikciAdres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TedarikciAdres)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TedarikciID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

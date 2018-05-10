@@ -1,0 +1,99 @@
+﻿@using VTYS_Proje.App_Class;
+@{
+    ViewBag.Title = "Sepetim";
+    Layout = "~/Views/Shared/_LayoutUserSidebarsiz.cshtml";
+}
+@model VTYS_Proje.App_Class.Sepet
+<div class="content">
+    <div class="container">
+        <h1>Sepetim</h1>
+
+        <div class="shopping-cart">
+            <div class="shopping-cart-products">
+                <ul class="shopping-product-detail">
+                    <li class="shopping-1">Ürün Resmi</li>
+                    <li class="shopping-2">Ürün Adı</li>
+                    <li class="shopping-3">Açıklama</li>
+                    <li class="shopping-4">Adet</li>
+                    <li class="shopping-5">Birim Fiyat</li>
+                    <li class="shopping-6">Toplam</li>
+                </ul>
+
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model.Urunler)
+                    {
+                        <ul class="shopping-product-detail">
+                            <li class="shopping-1">
+                                <img src="~/Resimler/@item.urun.Resim.FirstOrDefault(x => x.UrunID == item.urun.UrunID).ResimAdi" alt="@item.urun.UrunAdi" />
+                            </li>
+                            <li class="shopping-2">
+                                <a href="/Home/UrunDetay/@item.urun.UrunID">@item.urun.UrunAdi</a>
+                            </li>
+                            <li class="shopping-3">
+                                <p>@item.urun.UrunAciklama</p>
+                            </li>
+                            <li class="shopping-4">
+                                <input type="number" name="Adet" value="@item.Adet" title="Adet" class="input-text qty text">
+                            </li>
+                            <li class="shopping-5">
+                                @String.Format("{0:N2}", @item.urun.UrunFiyat) TL
+                            </li>
+                            <li class="shopping-6">
+                                @String.Format("{0:N2}", @item.Tutar) TL
+                                <button>Sil</button>
+                            </li>
+                        </ul>
+                    }
+
+                }
+                else
+                {
+                    <br />
+                    <span style="color:red">&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;Sepetinizde ürün yok</span>
+                    <br /><br />
+                }
+
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="/Home/Index" class="button-7">Alışverişe devam et</a>
+                </div>
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-4">
+                    <div class="checkout-total">
+                        <p>
+                            Alt Toplam :
+                            @if (Model != null)
+                            {
+                                @String.Format("{0:N2}", @Model.GenelToplam)
+                            }
+                            else
+                            {
+                                <span>0</span>
+                            }
+                            <span> TL</span>
+                        </p>
+                        @if (Model != null)
+                        {
+                            decimal altToplam = Model.GenelToplam;
+                            decimal kargoUcreti = 10.00M;
+                            decimal genelToplam = altToplam + kargoUcreti;
+
+                            <p>Kargo Ücreti : @kargoUcreti TL</p>
+                            <hr />
+                            <p>
+                                Genel Toplam : @String.Format("{0:N2}", genelToplam)
+                            </p>
+                            <button class="button-6">Satın Al</button>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

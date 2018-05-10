@@ -1,0 +1,46 @@
+﻿@model IEnumerable<VTYS_Proje.Models.Tedarikci>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Urun.UrunAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TedarikciAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TedarikciAdres)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Urun.UrunAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TedarikciAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TedarikciAdres)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TedarikciID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TedarikciID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TedarikciID })
+        </td>
+    </tr>
+}
+
+</table>

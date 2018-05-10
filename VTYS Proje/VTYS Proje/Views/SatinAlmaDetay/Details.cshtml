@@ -1,0 +1,51 @@
+﻿@model VTYS_Proje.Models.SatinAlmaDetay
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SatinAlmaDetay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SatinAlma.SatinAlmaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SatinAlma.SatinAlmaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Urun.UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Urun.UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlisFiyati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlisFiyati)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

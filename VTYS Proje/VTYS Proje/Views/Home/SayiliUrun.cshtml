@@ -1,0 +1,25 @@
+﻿@model IEnumerable<VTYS_Proje.Models.Urun>
+<div class="col-md-9">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-xs-6">
+                <div class="product">
+                    <div class="product-cover">
+                        <div class="product-cover-hover"><span><a href="/Home/UrunDetay/@item.UrunID">İncele</a></span></div>
+                        <img style="width:280px; height:230px;" src="/Resimler/@item.Resim.FirstOrDefault(x=>x.UrunID==item.UrunID).ResimAdi" alt="@item.UrunAdi" />
+                    </div>
+                    <div class="product-details" style="height:150px;">
+                        <h1><a href="/Home/UrunDetay/@item.UrunID">@item.UrunAdi</a></h1>
+                        <p>@item.UrunAciklama</p>
+                        <div class="product-price">
+                            @String.Format("{0:N2}", @item.UrunFiyat) TL
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

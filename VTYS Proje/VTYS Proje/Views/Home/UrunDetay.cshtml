@@ -1,0 +1,153 @@
+﻿@using VTYS_Proje.Models;
+@model Urun
+@{
+    ViewBag.Title = "UrunDetay-" + Model.UrunAdi + "-" + Model.UrunAciklama;
+    ViewBag.Description = Model.UrunAciklama;
+    Layout = "~/Views/Shared/_LayoutUserSidebarsiz.cshtml";
+}
+
+<script src="~/Content/Template/js/jquery-1.10.0.min.js"></script>
+<script>
+    $(document).ready(function myfunction() {
+        $(".button-2").click(function myfunction() {
+            var uid = $(this).attr("name");
+            $.ajax({
+                type: "GET",
+                url: "/Home/SepeteEkle",
+                data:{id:uid},
+                success: function myfunction() {
+                    alert("Ürün sepete eklendi.")
+                },
+                error: function myfunction() {
+                    alert("Hata: Ürün sepete eklenemedi.")
+                },
+            });
+        });
+    });
+
+    $(document).ready(function favori() {
+        $(".button-3").click(function favori() {
+            var uid = $(this).attr("name");
+            $.ajax({
+                type: "GET",
+                url: "/Home/FavorilereEkle",
+                data: { id: uid },
+                success: function favori() {
+                    alert("Ürün beğenilenlere eklendi.")
+                },
+                error: function myfunction() {
+                    alert("Hata: Ürün beğenilenlere eklenemedi.")
+                },
+            });
+        });
+    });
+</script>
+
+<div class="product-one">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="the-slider product-big-image" data-tesla-plugin="slider" data-tesla-item=".slide" data-tesla-next=".product-image-arrows-right" data-tesla-prev=".product-image-arrows-left" data-tesla-container=".slide-wrapper">
+                    <ul class="product-image-arrows">
+                        <li class="product-image-arrows-left"><i class="icon-517" title="left"></i></li>
+                        <li class="product-image-arrows-right"><i class="icon-501" title="right"></i></li>
+                    </ul>
+                    <ul class="slide-wrapper">
+                        @foreach (Resim item in ViewBag.Resimler)
+                        {
+                            <li class="slide">
+                                <img src="/Resimler/@item.ResimAdi" alt="@item.ResimAdi" />
+                            </li>
+                        }
+
+                    </ul>
+                    <div class="row">
+                        <ul class="the-bullets-dots" data-tesla-plugin="bullets">
+                            @foreach (Resim item in ViewBag.Resimler)
+                            {
+                                <li>
+                                    <div class="col-md-2 col-xs-2">
+                                        <img src="/Resimler/@item.ResimAdi" alt="@item.ResimAdi" />
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>@Model.UrunAdi</h2>
+                <!--<div class="product-rate">
+                    <i class="icon-423" title="full"></i>
+                    <i class="icon-423" title="full"></i>
+                    <i class="icon-423" title="full"></i>
+                    <i class="icon-423" title="full"></i>
+                    <i class="icon-421" title="empty"></i>
+                </div>
+                <div class="sort-dropdown">
+                    <span>Size <i class="icon-515" title="515"></i></span>
+                    <ul>
+                        <li><a href="#">XS</a></li>
+                        <li><a href="#">S</a></li>
+                        <li><a href="#">M</a></li>
+                        <li><a href="#">L</a></li>
+                        <li><a href="#">XL</a></li>
+                        <li><a href="#">XXL</a></li>
+                        <li><a href="#">XXXL</a></li>
+                    </ul>
+                </div>-->
+                <div class="clear"></div>
+                <div class="quantity">
+                    <input type="number" step="1" min="1" name="Adet" value="1" title="Adet" class="input-text qty text">
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="product-price">Fiyat : @String.Format("{0:N2}", Model.UrunFiyat)</div>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#" class="button-2" name="@Model.UrunID">Sepete Ekle</a>
+                        <a href="#" name="@Model.UrunID" class="button-3">Favorilerime Ekle</a>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#description" data-toggle="tab">Açıklama</a></li>
+                    <li class=""><a href="#reviews" data-toggle="tab">Yorumlar</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="description">
+                        <p>@Model.UrunAciklama</p>
+                        <ul class="social-share">
+                            <li><span>Paylaş</span></li>
+                            <li><a href="#"><i class="icon-160" title="161"></i></a></li>
+                            <li><a href="#"><i class="icon-138" title="161"></i></a></li>
+                            <li><a href="#"><i class="icon-106" title="161"></i></a></li>
+                            <li><a href="#"><i class="icon-169" title="161"></i></a></li>
+                            <li><a href="#"><i class="icon-163" title="161"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="reviews">
+                        <div class="product-review">
+                            <div class="product-review-avatar">
+                                <img src="images/elements/testimonial-avatar.jpg" alt="avatar" />
+                            </div>
+                            <div class="product-review-author">Jane Doe <span>12 Jan</span></div>
+                            <p>I like the item very much, it is so on my size and it looks great.</p>
+                        </div>
+
+                        <div class="product-review">
+                            <div class="product-review-avatar">
+                                <img src="images/elements/testimonial-avatar.jpg" alt="avatar" />
+                            </div>
+                            <div class="product-review-author">Jane Doe <span>10 Jan</span></div>
+                            <p>It is so on my size, i like the item very much, it is so on my size and it looks great i like it a lot It is so on my size, i like the item very much, it is so on my size and it looks great.</p>
+                        </div>
+                        <a href="#" class="button-6" data-toggle="modal" data-target="#write-review">Yorum Yap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

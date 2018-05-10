@@ -1,0 +1,17 @@
+﻿@model IEnumerable<VTYS_Proje.Models.Kategori>
+
+<div class="col-md-12 col-xs-6">
+    <div class="products-dropdown open-dropdown">
+        <span><i class="icon-515" title="515"></i>Kategoriler</span>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li><a href="/Home/Urunler/@item.KategoriID">@item.KategoriAdi (@item.Urun.Count)</a></li>
+            }
+        </ul>
+        <ul>
+            <li><a href="/Home/Index"</a>Tümünü göster </li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>

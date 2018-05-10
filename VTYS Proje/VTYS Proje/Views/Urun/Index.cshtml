@@ -1,0 +1,65 @@
+﻿@model IEnumerable<VTYS_Proje.Models.Urun>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori.KategoriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marka.MarkaAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunAciklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunFiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunStok)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marka.MarkaAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunAciklama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunFiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunStok)
+        </td>
+        <td>
+            @Html.ActionLink("Resim Ekle", "ResimEkle", new { id = item.UrunID }) |
+            @Html.ActionLink("Güncelle", "Edit", new { id = item.UrunID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id = item.UrunID }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.UrunID })
+        </td>
+    </tr>
+}
+
+</table>

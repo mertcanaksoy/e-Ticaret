@@ -1,0 +1,35 @@
+﻿@model VTYS_Proje.Models.Musteri
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Musteri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kisi.AdSoyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kisi.AdSoyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MusteriID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
